@@ -1,0 +1,9 @@
+AI Document Automation Test
+Dieses Dokument wird mit Python verarbeitet.
+Projekt:
+Automatische Dokumentenanalyse mit KI.
+Technologien:
+- Python
+- PyMuPDF
+- RAG Pipeline
+- Large Language Models
