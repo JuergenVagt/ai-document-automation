@@ -1,14 +1,18 @@
-def summarize_text(input_file, output_file):
-    with open(input_file, "r", encoding="utf-8") as file:
-        text = file.read()
+import json
 
-    summary = (
-        "Dokumentzusammenfassung\n"
-        "=======================\n\n"
-        "Dieses Dokument wurde automatisch analysiert.\n\n"
-        "Auszug:\n"
-        + text[:500]
-    )
+
+def create_summary(analysis_file, output_file):
+    with open(analysis_file, "r", encoding="utf-8") as file:
+        analysis = json.load(file)
+
+    summary = f"""
+Dokumentenzusammenfassung
+
+Anzahl Chunks: {analysis.get("chunks", "unbekannt")}
+
+Analyse:
+{analysis}
+"""
 
     with open(output_file, "w", encoding="utf-8") as file:
         file.write(summary)
@@ -17,7 +21,7 @@ def summarize_text(input_file, output_file):
 
 
 if __name__ == "__main__":
-    summarize_text(
-        "output/chunks.txt",
+    create_summary(
+        "output/analysis.json",
         "output/summary.txt"
     )
